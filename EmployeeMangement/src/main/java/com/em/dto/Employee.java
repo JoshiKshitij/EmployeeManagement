@@ -1,6 +1,8 @@
 package com.em.dto;
 
 import java.time.LocalDate;
+import java.util.Date;
+
 
 public class Employee {
 	public Employee() {
@@ -11,8 +13,8 @@ public class Employee {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private LocalDate dob;
-	private LocalDate dateOfJoing;
+	private Date dob;
+	private Date dateOfJoing;
 	private boolean isActive;
 
 	public Long getId() {
@@ -39,27 +41,29 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public LocalDate getDob() {
+	
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
-	public LocalDate getDateOfJoing() {
+	public Date getDateOfJoing() {
 		return dateOfJoing;
 	}
 
-	public void setDateOfJoing(LocalDate dateOfJoing) {
+	public void setDateOfJoing(Date dateOfJoing) {
 		this.dateOfJoing = dateOfJoing;
 	}
 
-	public boolean isActive() {
+
+	public boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
 
@@ -69,7 +73,7 @@ public class Employee {
 				+ ", dateOfJoing=" + dateOfJoing + ", isActive=" + isActive + "]";
 	}
 
-	public Employee(Long id, String firstName, String lastName, LocalDate dob, LocalDate dateOfJoing,
+	public Employee(Long id, String firstName, String lastName, Date dob, Date dateOfJoing,
 			boolean isActive) {
 		super();
 		this.id = id;
@@ -80,7 +84,7 @@ public class Employee {
 		this.isActive = isActive;
 	}
 
-	public Employee(String firstName, String lastName, LocalDate dob, LocalDate dateOfJoing, boolean isActive) {
+	public Employee(String firstName, String lastName,Date dob, Date dateOfJoing, boolean isActive) {
 		super();
 
 		this.firstName = firstName;

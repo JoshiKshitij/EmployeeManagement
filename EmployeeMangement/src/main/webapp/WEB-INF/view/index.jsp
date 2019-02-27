@@ -4,12 +4,11 @@
 	<h2>Index.jsp</h2>
 
 	<form action="saveEmployee" method="post">
-		  id <input type="text" name="id"> <br>
+		   id <input type="text" name="id"> <br>
 		  first name <input type="text" name="firstName"><br>
-		  last name <input type="text" name=lastName> <br>
-		  dob<input type="date" name="dob"><br> 
-		  date of joining <input type="date" name="dateOfJoing"><br>
-		  is active <input type="text" name="isActive">
+		  last name <input type="text" name=lastName> <br> --%>
+		  dob<input type="text" name="dob"><br> 
+		    is active <input type="text" name="isActive" ><br> 
 		  <input type="submit" value="Click">
 	</form>
 

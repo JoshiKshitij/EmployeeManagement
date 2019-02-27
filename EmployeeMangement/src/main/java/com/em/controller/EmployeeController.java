@@ -1,4 +1,7 @@
 package com.em.controller;
+import java.sql.Date;
+import java.time.LocalDate;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,15 +23,15 @@ public class EmployeeController {
 	public 	String index(){
 		return "index";
 	}
-
+	
 	@RequestMapping(value ="/saveEmployee" , method = RequestMethod.POST)
-	String saveEmployee(Employee employee , BindingResult result){
+	String saveEmployee(@ModelAttribute Employee employee ,BindingResult result ){
 		if(result.hasErrors()) {
 			return "index";
 		}
-		System.out.println(employee);
 		return "employeeDetails";
 	}
+	
 
 	public EmployeeController() {
 		System.out.println("emp comtroller created");

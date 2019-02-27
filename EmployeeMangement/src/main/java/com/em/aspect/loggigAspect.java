@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 public class loggigAspect {
 	
 	Logger logger = Logger.getLogger(this.getClass());
-	//Logger logg = Logger.getLogger(loggigAspect.class);
 
 	@Pointcut("within(com.em.controller..*) || within(com.em.service..*) ||within(com.em.dao..*)")
 	void withinMyChoice() {
@@ -36,4 +35,5 @@ public class loggigAspect {
 		return join.proceed();
 	}
 
+	
 }
