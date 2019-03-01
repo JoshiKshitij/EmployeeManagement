@@ -1,12 +1,12 @@
 package com.em.service;
 
-import com.em.dto.Employee;
+import com.em.dto.EmployeeDto;
 
 public interface EmployeeServiceInterface {
 	
-	public Long saveEmployee(Employee employee);
-	public int deleteEmployee(Employee employee);
-	public Employee getEmployee(Long id);
-	public Employee updateEmployee(Employee employee);
+	public Long saveEmployee(EmployeeDto employee);
+	public int deleteEmployee(EmployeeDto employee);
+	public EmployeeDto getEmployee(Long id);
+	public EmployeeDto updateEmployee(EmployeeDto employee);
 	
 }

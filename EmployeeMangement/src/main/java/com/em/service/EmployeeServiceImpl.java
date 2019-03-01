@@ -3,28 +3,28 @@ package com.em.service;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.em.dto.Employee;
+import com.em.dto.EmployeeDto;
 
 @Service
 @Primary
 public class EmployeeServiceImpl implements EmployeeServiceInterface{
 
-	public Long saveEmployee(Employee employee) {
+	public Long saveEmployee(EmployeeDto employee) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public int deleteEmployee(Employee employee) {
+	public int deleteEmployee(EmployeeDto employee) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public Employee getEmployee(Long id) {
+	public EmployeeDto getEmployee(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Employee updateEmployee(Employee employee) {
+	public EmployeeDto updateEmployee(EmployeeDto employee) {
 		// TODO Auto-generated method stub
 		return null;
 	}

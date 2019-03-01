@@ -12,8 +12,8 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="com.em"></context:component-scan>
-	<context:annotation-config/>
-	
+	<context:annotation-config />
+
 	<bean id="viewReslover"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -24,8 +24,10 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="localsessionfactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
-		<property name="configLocations" value="/WEB-INF/hibernate.cfg.xml"></property> 
-		</bean> -->
+	<bean id="localsessionfactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="configLocations"
+			value="/WEB-INF/hibernate.cfg.xml"></property>
+	</bean>
 
 </beans>
