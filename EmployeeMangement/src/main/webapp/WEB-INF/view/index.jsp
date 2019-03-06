@@ -1,7 +1,9 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <body>
 	<h2>Hello World!</h2>
-	<h2>Index.jsp</h2>
+	<h2>${ index }</h2>
 
 	<form action="saveEmployee" method="post">
 		   id <input type="text" name="id"> <br>

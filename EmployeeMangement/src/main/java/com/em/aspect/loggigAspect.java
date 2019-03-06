@@ -21,7 +21,7 @@ public class loggigAspect {
 	
 	Logger logger = Logger.getLogger(this.getClass());
 
-	@Pointcut("within(com.em.controller..*) || within(com.em.service..*) ||within(com.em.dao..*)")
+	@Pointcut("within(com.em.controller..*) ")
 	void withinMyChoice() {
 	}
 

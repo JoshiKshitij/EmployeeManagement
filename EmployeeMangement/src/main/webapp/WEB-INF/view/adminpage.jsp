@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2>${employee}</h2>
+
+<% request.getAttribute("test"); %>
+<a href="userProfile">updateProfile</a>
+
 </body>
 </html>
+
+

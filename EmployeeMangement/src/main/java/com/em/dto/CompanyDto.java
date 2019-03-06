@@ -30,7 +30,7 @@ public class CompanyDto {
 	@Embedded
 	private AddressDto address;
 	
-	@OneToMany(mappedBy = "comp" )
+	@OneToMany(mappedBy = "comp" ,cascade  = CascadeType.ALL)
 	private List<DepartmentDto> listOfDepts = new ArrayList<DepartmentDto>();
 	
 	@OneToMany(mappedBy = "company" , cascade = CascadeType.ALL)

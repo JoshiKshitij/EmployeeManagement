@@ -1,32 +1,19 @@
 package com.em.service;
 
-import org.springframework.context.annotation.Primary;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.em.dao.EmployeeDaoImpl;
 import com.em.dto.EmployeeDto;
 
 @Service
-@Primary
-public class EmployeeServiceImpl implements EmployeeServiceInterface{
+public class EmployeeServiceImpl implements EmployeeServiceInterface {
 
-	public Long saveEmployee(EmployeeDto employee) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Autowired
+	EmployeeDaoImpl daoImpl;
 
-	public int deleteEmployee(EmployeeDto employee) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public EmployeeDto getEmployee(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public EmployeeDto updateEmployee(EmployeeDto employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public EmployeeDto getEmpByLoginId(String loginId) {
+		return daoImpl.getEmpByLoginId(loginId);
 	}
 
 }

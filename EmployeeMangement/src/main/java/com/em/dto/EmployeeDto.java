@@ -21,49 +21,49 @@ public class EmployeeDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Id
-	@GenericGenerator(name = "gen" , strategy = "increment")
-	@GeneratedValue(generator ="gen")
+	@GenericGenerator(name = "gen", strategy = "increment")
+	@GeneratedValue(generator = "gen")
 	private Long id;
-	
-	@Column(name = "first_name" , nullable = false ,length = 20 )
+
+	@Column(name = "first_name", nullable = false, length = 20)
 	private String firstName;
-	
-	@Column(name = "last_name" , nullable = false ,length = 20 )
+
+	@Column(name = "last_name", nullable = false, length = 20)
 	private String lastName;
-	
+
 	@Column(name = "date_of_birth")
 	private Date dob;
 
 	@Column(name = "date_of_joining")
 	private Date dateOfJoing;
-	
+
 	@Column(name = "is_active")
 	private boolean isActive;
-	
-	@Column(name = "login_id" ,nullable = false )
+
+	@Column(name = "login_id", nullable = false)
 	private String loginId;
-	
-	@Column(name = "password" ,nullable = false )
+
+	@Column(name = "password", nullable = false)
 	private String password;
-	
-	@Column(name = "role" ,nullable = false )
+
+	@Column(name = "role", nullable = false)
 	private String role;
-	
+
 	@Embedded
 	private AddressDto addressDto;
-	
+
 	@ManyToOne
-	@JoinColumn(name ="dtp_id")
-	private DepartmentDto  department;
-	
+	@JoinColumn(name = "dtp_id")
+	private DepartmentDto department;
+
 	@ManyToOne
-	@JoinColumn(name ="comp_id")
+	@JoinColumn(name = "comp_id")
 	private CompanyDto company;
-	
+
 	public Long getId() {
-			return id;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -86,7 +86,6 @@ public class EmployeeDto {
 		this.lastName = lastName;
 	}
 
-	
 	public Date getDob() {
 		return dob;
 	}
@@ -103,7 +102,6 @@ public class EmployeeDto {
 		this.dateOfJoing = dateOfJoing;
 	}
 
-
 	public boolean getIsActive() {
 		return isActive;
 	}
@@ -114,12 +112,13 @@ public class EmployeeDto {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
-				+ ", dateOfJoing=" + dateOfJoing + ", isActive=" + isActive + "]";
+		return "EmployeeDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
+				+ ", dateOfJoing=" + dateOfJoing + ", isActive=" + isActive + ", loginId=" + loginId + ", password="
+				+ password + ", role=" + role + ", addressDto=" + addressDto + ", department=" + department
+				+ ", company=" + company + "]";
 	}
 
-	public EmployeeDto(Long id, String firstName, String lastName, Date dob, Date dateOfJoing,
-			boolean isActive) {
+	public EmployeeDto(Long id, String firstName, String lastName, Date dob, Date dateOfJoing, boolean isActive) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -129,7 +128,7 @@ public class EmployeeDto {
 		this.isActive = isActive;
 	}
 
-	public EmployeeDto(String firstName, String lastName,Date dob, Date dateOfJoing, boolean isActive) {
+	public EmployeeDto(String firstName, String lastName, Date dob, Date dateOfJoing, boolean isActive) {
 		super();
 
 		this.firstName = firstName;
