@@ -13,6 +13,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,16 +34,21 @@ import com.em.service.EmployeeServiceInterface;
 public class EmployeeController {
 
 	@Autowired
-	EmployeeServiceImpl serviceImpl;
+	EmployeeServiceInterface serviceImpl;
 
 	Logger logger = Logger.getLogger(EmployeeController.class);
 
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute("index", "Model test is working");
+		//model.addAttribute("index", "Model test is working");
 		return "login";
 	}
-
+	
+	@GetMapping("/saveEmpPage")
+	public String saveEmpPage() {
+		return "saveEmp";
+	}
+	
 	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
 	String saveEmployee(@ModelAttribute EmployeeDto employee, BindingResult result) {
 		if (result.hasErrors()) {
@@ -73,7 +79,7 @@ public class EmployeeController {
 			}
 			if (empFromDb.getRole().equals("user")) {
 				model.addAttribute("welcome",
-						"welcome" + empFromDb.getFirstName() + "" + " " + empFromDb.getLastName());
+						"welcome " + empFromDb.getFirstName() + "" + " " + empFromDb.getLastName());
 				return "userpage";
 			}
 		}
@@ -82,14 +88,49 @@ public class EmployeeController {
 	
 	//@GetMapping("/userProfile")
 	@RequestMapping(value = "/userProfile" ,method= RequestMethod.GET)
-	public String userprofile(Model model , HttpSession session) {
+	public String userprofile(Model model , HttpSession session  ) {
 
 			Object object = session.getAttribute("empDto");
+			if(object == null) {
+				return "login";
+			}
+			
 			
 			EmployeeDto emp = (EmployeeDto)object;
-		
+			
 			model.addAttribute("emp", emp);
 			
 		return "profilepage";
 	}
+	
+	
+	// display delete page
+	@RequestMapping(value = "/deleteAccountPage" ,method= RequestMethod.GET)
+	public String deletePage( ) {	
+		return "deleteAccountPage";
+	}
+	
+	//delete Emp
+	@RequestMapping(value = "/deleteAccount" ,method= RequestMethod.GET)
+	public String deleteAccount( HttpSession session) {
+			Object object = session.getAttribute("empDto");
+			EmployeeDto emp = (EmployeeDto)object;
+			serviceImpl.deleteAccount(emp);
+		return "login";
+	}
+	
+	// will take you to update emp page
+	@GetMapping("/updateEmpPage")
+	public String updateEmpPage() {
+		return "updateEmp";
+	}
+	
+	@RequestMapping(value = "/updateEmp", method = RequestMethod.POST)
+	String updateEmployee(@ModelAttribute EmployeeDto employee, BindingResult result) {
+		if (result.hasErrors()) {
+			return "index";
+		}
+		return "employeeDetails";
+	}
+
 }

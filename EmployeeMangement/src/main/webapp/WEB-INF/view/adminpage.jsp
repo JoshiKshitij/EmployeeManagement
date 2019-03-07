@@ -3,9 +3,11 @@
 <html>
 <body>
 
-<% request.getAttribute("test"); %>
+<% request.getAttribute("welcome"); %>
 <a href="userProfile">updateProfile</a>
-
+<a href="saveEmpPage"> add employee </a>
+<a href="deleteAccountPage">delete account</a>
+<a href="logout">logout</a>
 </body>
 </html>
 

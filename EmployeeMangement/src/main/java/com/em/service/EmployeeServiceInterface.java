@@ -10,4 +10,6 @@ public interface EmployeeServiceInterface {
 	 * id); public EmployeeDto updateEmployee(EmployeeDto employee);
 	 */
 	public EmployeeDto getEmpByLoginId(String loginId );
+
+	public void deleteAccount(EmployeeDto emp);
 }

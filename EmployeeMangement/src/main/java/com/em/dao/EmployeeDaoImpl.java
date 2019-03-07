@@ -22,6 +22,13 @@ public class EmployeeDaoImpl implements EmployeeDaoInterface{
 		query.setString("loginId", loginId);
 		return (EmployeeDto)query.uniqueResult();
 	}
-	
-	
+
+	public void deleteAccount(EmployeeDto emp) {
+		Session session = factory.openSession();
+		EmployeeDto employeeDto = session.get(EmployeeDto.class, emp.getId());
+		session.beginTransaction();
+		session.delete(employeeDto);
+		session.getTransaction().commit();
+		
+	}
 }
