@@ -30,12 +30,9 @@
 	<tr>
 		<td>pin code</td> <td>${ emp.addressDto.pincode}</td>
 	</tr>
-	
-	
-	
 </table>
 
 
-<p><a href="udateProfile">update profile</a></p>
+<p><a href="updateProfile">update profile</a></p>
 </body>
 </html>

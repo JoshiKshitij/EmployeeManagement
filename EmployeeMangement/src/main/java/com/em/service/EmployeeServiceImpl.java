@@ -21,4 +21,9 @@ public class EmployeeServiceImpl implements EmployeeServiceInterface {
 		daoImpl.deleteAccount(emp);	
 	}
 
+	public void udpateEmp(EmployeeDto empFromJspp) {
+		daoImpl.updateEmp(empFromJspp);
+		
+	}
+
 }

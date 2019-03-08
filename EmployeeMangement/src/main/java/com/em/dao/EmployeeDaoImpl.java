@@ -31,4 +31,11 @@ public class EmployeeDaoImpl implements EmployeeDaoInterface{
 		session.getTransaction().commit();
 		
 	}
+
+	public void updateEmp(EmployeeDto empFromJspp) {
+	Session session = factory.openSession();
+	session.beginTransaction();
+	session.update(empFromJspp);	
+	session.getTransaction().commit();
+	}
 }

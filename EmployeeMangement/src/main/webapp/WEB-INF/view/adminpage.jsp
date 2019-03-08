@@ -4,10 +4,13 @@
 <body>
 
 <% request.getAttribute("welcome"); %>
-<a href="userProfile">updateProfile</a>
-<a href="saveEmpPage"> add employee </a>
-<a href="deleteAccountPage">delete account</a>
-<a href="logout">logout</a>
+
+<h3>
+<a href="userProfile">Profile</a><br>
+<a href="saveEmpPage"> add employee </a><br>
+<a href="deleteAccountPage">delete account</a><br>
+<a href="logout">logout</a><br>
+</h3>
 </body>
 </html>
 

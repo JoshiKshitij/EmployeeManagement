@@ -12,4 +12,8 @@ public interface EmployeeServiceInterface {
 	public EmployeeDto getEmpByLoginId(String loginId );
 
 	public void deleteAccount(EmployeeDto emp);
+
+	public void udpateEmp(EmployeeDto empFromJspp);
+	
+	
 }

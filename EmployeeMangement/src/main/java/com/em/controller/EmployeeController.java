@@ -40,15 +40,15 @@ public class EmployeeController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		//model.addAttribute("index", "Model test is working");
+		// model.addAttribute("index", "Model test is working");
 		return "login";
 	}
-	
+
 	@GetMapping("/saveEmpPage")
 	public String saveEmpPage() {
 		return "saveEmp";
 	}
-	
+
 	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
 	String saveEmployee(@ModelAttribute EmployeeDto employee, BindingResult result) {
 		if (result.hasErrors()) {
@@ -62,19 +62,20 @@ public class EmployeeController {
 	}
 
 	@PostMapping(value = "/loginEmp")
-	//@RequestMapping(value = "/loginEmp", method = RequestMethod.POST)
+	// @RequestMapping(value = "/loginEmp", method = RequestMethod.POST)
 	public String login(@RequestParam String loginId, @RequestParam String password, Model model) {
-		
+
 		EmployeeDto empFromDb = serviceImpl.getEmpByLoginId(loginId);
-		
+
+		// this line will bind the object to the session
 		model.addAttribute("empDto", empFromDb);
-		//model.addAttribute("test", "testvalue");
-		
+		// model.addAttribute("test", "testvalue");
+
 		if (password.equals(empFromDb.getPassword())) {
 			if (empFromDb.getRole().equals("admin")) {
 				model.addAttribute("welcome",
 						"welcome " + empFromDb.getFirstName() + "" + " " + empFromDb.getLastName());
-				
+
 				return "adminpage";
 			}
 			if (empFromDb.getRole().equals("user")) {
@@ -85,52 +86,70 @@ public class EmployeeController {
 		}
 		return "login";
 	}
-	
-	//@GetMapping("/userProfile")
-	@RequestMapping(value = "/userProfile" ,method= RequestMethod.GET)
-	public String userprofile(Model model , HttpSession session  ) {
 
-			Object object = session.getAttribute("empDto");
-			if(object == null) {
-				return "login";
-			}
-			
-			
-			EmployeeDto emp = (EmployeeDto)object;
-			
-			model.addAttribute("emp", emp);
-			
+	// @GetMapping("/userProfile")
+	@RequestMapping(value = "/userProfile", method = RequestMethod.GET)
+	public String userprofile(Model model, HttpSession session) {
+
+		Object object = session.getAttribute("empDto");
+		if (object == null) {
+			return "login";
+		}
+		EmployeeDto emp = (EmployeeDto) object;
+		model.addAttribute("emp", emp);
 		return "profilepage";
 	}
-	
-	
+
 	// display delete page
-	@RequestMapping(value = "/deleteAccountPage" ,method= RequestMethod.GET)
-	public String deletePage( ) {	
+	@RequestMapping(value = "/deleteAccountPage", method = RequestMethod.GET)
+	public String deletePage() {
 		return "deleteAccountPage";
 	}
-	
-	//delete Emp
-	@RequestMapping(value = "/deleteAccount" ,method= RequestMethod.GET)
-	public String deleteAccount( HttpSession session) {
-			Object object = session.getAttribute("empDto");
-			EmployeeDto emp = (EmployeeDto)object;
-			serviceImpl.deleteAccount(emp);
+
+	// delete Emp
+	@RequestMapping(value = "/deleteAccount", method = RequestMethod.GET)
+	public String deleteAccount(HttpSession session) {
+		Object object = session.getAttribute("empDto");
+		EmployeeDto emp = (EmployeeDto) object;
+		serviceImpl.deleteAccount(emp);
 		return "login";
 	}
-	
+
 	// will take you to update emp page
-	@GetMapping("/updateEmpPage")
-	public String updateEmpPage() {
-		return "updateEmp";
+	@GetMapping("/updateProfile")
+	public String updateEmpPage(Model model, HttpSession session) {
+		// object form seesion
+		EmployeeDto emp = (EmployeeDto) session.getAttribute("empDto");
+		// send objet to js page
+		model.addAttribute("emp", emp);
+		return "updateEmpPage";
 	}
-	
+
 	@RequestMapping(value = "/updateEmp", method = RequestMethod.POST)
-	String updateEmployee(@ModelAttribute EmployeeDto employee, BindingResult result) {
+	String updateEmployee(@ModelAttribute EmployeeDto empFromJspp, BindingResult result, HttpSession session,
+			Model model) {
+		// object form session
+		EmployeeDto emp = (EmployeeDto) session.getAttribute("empDto");
+
+		// whether model has error or not
 		if (result.hasErrors()) {
-			return "index";
+			model.addAttribute("error", result.getFieldError().getField());
+			System.out.println(empFromJspp);
+			// send objet to js page
+			model.addAttribute("emp", emp);
+
+			return "updateEmpPage";
 		}
-		return "employeeDetails";
+
+		System.out.println(empFromJspp);
+		// updation logic
+		empFromJspp.setCompany(emp.getCompany());
+		empFromJspp.setDepartment(emp.getDepartment());
+		empFromJspp.setRole(emp.getRole());
+		empFromJspp.setId(emp.getId());
+		serviceImpl.udpateEmp(empFromJspp);
+
+		return "profilePage";
 	}
 
 }

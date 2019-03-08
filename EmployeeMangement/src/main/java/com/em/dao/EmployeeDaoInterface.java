@@ -6,4 +6,6 @@ public interface EmployeeDaoInterface {
 	public EmployeeDto getEmpByLoginId(String loginId );
 
 	public void deleteAccount(EmployeeDto emp);
+
+	public void updateEmp(EmployeeDto empFromJspp);
 }
