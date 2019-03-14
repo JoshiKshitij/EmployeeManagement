@@ -32,7 +32,9 @@ public class EmpAdminController {
 
 	// it will recieve form data
 	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
-	String saveEmployee(@ModelAttribute EmployeeDto employee, BindingResult result, Model model, HttpSession session) {
+	String saveEmployee(@ModelAttribute EmployeeDto employee, 
+			BindingResult result, Model model,
+			HttpSession session) {
 		if (result.hasErrors()) {
 			return "saveEmp";
 		}
@@ -53,7 +55,6 @@ public class EmpAdminController {
 					empAdmin.getPassword());
 			return "saveEmp";
 		}
-
 		return "employeeDetails";
 	}
 

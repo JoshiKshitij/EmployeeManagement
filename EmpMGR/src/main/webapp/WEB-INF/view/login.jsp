@@ -1,7 +1,7 @@
 <html>
 <body>
 	<h2>${ index }</h2>
-	<h2>login !</h2>
+	<h3>login !</h3>
 	<form action="loginEmp" method="post">
 		<div>
 			<table>

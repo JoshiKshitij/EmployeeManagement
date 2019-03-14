@@ -32,7 +32,7 @@ public class loggigAspect {
 		String name = signature.getName(); 
 		String args = Arrays.toString(join.getArgs());
 		Object proceed = join.proceed();
-		logger.info(signature+" args ->"+args+ " result->"+proceed );
+		logger.info(signature+" args ->"+args+ " result-> "+proceed );
 		//System.out.println(signature+" args ->"+args+ " result->"+proceed );
 		return proceed;
 	}

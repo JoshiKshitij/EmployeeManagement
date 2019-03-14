@@ -26,13 +26,14 @@ public class LoginLogoutController {
 	
 	@GetMapping("/")
 	public String index(Model model) { //
-		model.addAttribute("index", "Model test is working");
+		model.addAttribute("index", "Employee Management");
 		return "login";
 	}
 	
 	// @PostMapping(value = "/loginEmp") //
 		@RequestMapping(value = "/loginEmp", method = RequestMethod.POST)
-		public String login(@RequestParam String loginId, @RequestParam String password, Model model) {
+		public String login(@RequestParam String loginId, @RequestParam String password, 
+				Model model) {
 
 			EmployeeDto empFromDb = serviceImpl.getEmpByLoginId(loginId);
 			
@@ -47,6 +48,12 @@ public class LoginLogoutController {
 							"welcome " + empFromDb.getFirstName() + "" + " " + empFromDb.getLastName());
 
 					return "adminpage";
+				}
+				if (empFromDb.getRole().equals("deptAdmin")) {
+					model.addAttribute("welcome",
+							"welcome " + empFromDb.getFirstName() + "" + " " + empFromDb.getLastName());
+
+					return "deptadminpage";
 				}
 				if (empFromDb.getRole().equals("user")) {
 					model.addAttribute("welcome",
