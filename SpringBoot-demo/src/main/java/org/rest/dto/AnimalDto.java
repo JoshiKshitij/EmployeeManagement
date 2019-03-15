@@ -1,11 +1,30 @@
 package org.rest.dto;
 
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tbl_name")
 public class AnimalDto {
-		
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+	@Column(name = "animal_type")
 	private String type;
+	
+	@Column(name = "animal_name")
 	private String name;
+	
+	@Column(name = "animal_age")
 	private int age;
+	
 	public String getType() {
 		return type;
 	}
@@ -37,6 +56,12 @@ public class AnimalDto {
 		this.type = type;
 		this.name = name;
 		this.age = age;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
